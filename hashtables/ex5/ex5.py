@@ -1,12 +1,23 @@
-# Your code here
-
-
-
 def finder(files, queries):
     """
     YOUR CODE HERE
     """
-    # Your code here
+    # Build a table with file: path
+    table = {}
+    for path in files:
+        f = path.split('/')[-1]  # extract filename
+
+        # add to the table
+        if f in table:
+            table[f].append(path)
+        else:
+            table[f] = [path]
+
+    result = []
+    for f in queries:
+        # append all paths for each queried file
+        if f in table:
+            result.extend(table[f])
 
     return result
 
